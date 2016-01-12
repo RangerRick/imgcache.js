@@ -15,7 +15,7 @@
 */
 
 /*jslint browser:true*/
-/*global console,LocalFileSystem,device,FileTransfer,define,module*/
+/*global console,LocalFileSystem,window,device,FileTransfer,define,module*/
 
 var ImgCache = {
         version: '1.0rc2',
@@ -144,30 +144,30 @@ var ImgCache = {
     };
 
     Helpers.isCordovaAndroid = function () {
-        return (Helpers.isCordova() && device && device.platform && device.platform.toLowerCase().indexOf('android') >= 0);
+        return (Helpers.isCordova() && window.device && window.device.platform && window.device.platform.toLowerCase().indexOf('android') >= 0);
     };
 
     Helpers.isCordovaWindowsPhone = function () {
-        return (Helpers.isCordova() && device && device.platform && ((device.platform.toLowerCase().indexOf('win32nt') >= 0) || (device.platform.toLowerCase().indexOf('windows') >= 0)));
+        return (Helpers.isCordova() && window.device && window.device.platform && ((window.device.platform.toLowerCase().indexOf('win32nt') >= 0) || (window.device.platform.toLowerCase().indexOf('windows') >= 0)));
     };
 
     Helpers.isCordovaIOS = function () {
-        return (Helpers.isCordova() && device && device.platform && device.platform.toLowerCase() === 'ios');
+        return (Helpers.isCordova() && window.device && window.device.platform && window.device.platform.toLowerCase() === 'ios');
     };
 
     // special case for #93
     Helpers.isCordovaAndroidOlderThan3_3 = function () {
-        return (Helpers.isCordovaAndroid() && device.version && (
-            device.version.indexOf('2.') === 0 ||
-            device.version.indexOf('3.0') === 0 ||
-            device.version.indexOf('3.1') === 0 ||
-            device.version.indexOf('3.2') === 0
+        return (Helpers.isCordovaAndroid() && window.device.version && (
+            window.device.version.indexOf('2.') === 0 ||
+            window.device.version.indexOf('3.0') === 0 ||
+            window.device.version.indexOf('3.1') === 0 ||
+            window.device.version.indexOf('3.2') === 0
         ));
     };
 
     // special case for #47
     Helpers.isCordovaAndroidOlderThan4 = function () {
-        return (Helpers.isCordovaAndroid() && device.version && (device.version.indexOf('2.') === 0 || device.version.indexOf('3.') === 0));
+        return (Helpers.isCordovaAndroid() && window.device.version && (window.device.version.indexOf('2.') === 0 || window.device.version.indexOf('3.') === 0));
     };
 
     // Fix for #42 (Cordova versions < 4.0)
